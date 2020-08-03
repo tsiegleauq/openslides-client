@@ -11,4 +11,8 @@ run-cleanup: | build-dev
 	docker run -t -v `pwd`/client:/app openslides-client-dev npm run cleanup
 
 run-tests:
-	echo "TODO"
+	docker run -t -v `pwd`/client:/app openslides-client-dev npm run lint-check
+	docker run -t -v `pwd`/client:/app openslides-client-dev npm run prettify-check
+	# TODO: Get the karma tests up and running
+	# docker run -t -v `pwd`/client:/app openslides-client-dev npm run test-silently
+	docker run -t -v `pwd`/client:/app openslides-client-dev npm run build-debug

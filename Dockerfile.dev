@@ -3,7 +3,8 @@ FROM node:13
 WORKDIR /app
 
 COPY client/package.json .
-RUN npm install
+COPY client/package-lock.json .
+RUN npm ci
 RUN npm run postinstall
 
 COPY client ./
