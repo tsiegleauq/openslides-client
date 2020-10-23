@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { marker as _ } from '@biesbjerg/ngx-translate-extract-marker';
 import { TranslateService } from '@ngx-translate/core';
 
-import { OrganisationSettingsService } from 'app/core/ui-services/organisation-settings.service';
+import { OrganizationSettingsService } from 'app/core/ui-services/organization-settings.service';
 import { ChartData, ChartDate } from 'app/shared/components/charts/charts.component';
 import { AssignmentPollMethod } from 'app/shared/models/assignments/assignment-poll';
 import {
@@ -197,12 +197,12 @@ export abstract class PollService {
 
     public constructor(
         // TODO: remove public. it is only here, so the linter doesn't complain about this unused variable
-        public organisationSettingsService: OrganisationSettingsService,
+        public organizationSettingsService: OrganizationSettingsService,
         protected translate: TranslateService,
         protected pollKeyVerbose: PollKeyVerbosePipe,
         protected parsePollNumber: ParsePollNumberPipe
     ) {
-        /*organisationSettingsService
+        /*organizationSettingsService
             .get<OpenSlidesSettings>('Settings')
             .subscribe(settings => (this.isElectronicVotingEnabled = settings.ENABLE_ELECTRONIC_VOTING));*/
         this.isElectronicVotingEnabled = false;

@@ -7,7 +7,7 @@ import { auditTime } from 'rxjs/operators';
 import { ConfigurationService } from '../core-services/configuration.service';
 import { HistoryService } from '../core-services/history.service';
 import { HttpService } from '../core-services/http.service';
-import { OrganisationSettingsService } from './organisation-settings.service';
+import { OrganizationSettingsService } from './organization-settings.service';
 import { StorageService } from '../core-services/storage.service';
 
 interface SamlSettings {
@@ -137,10 +137,10 @@ export class LoginDataService {
     /**
      * Constructs this service. The config service is needed to update the privacy
      * policy and legal notice, when their config values change.
-     * @param organisationSettingsService
+     * @param organizationSettingsService
      */
     public constructor(
-        private organisationSettingsService: OrganisationSettingsService,
+        private organizationSettingsService: OrganizationSettingsService,
         private storageService: StorageService,
         private historyService: HistoryService,
         private configurationService: ConfigurationService
@@ -155,25 +155,25 @@ export class LoginDataService {
      */
     private async setup(): Promise<void> {
         await this.loadLoginData();
-        this.organisationSettingsService.get<string>('general_event_privacy_policy').subscribe(value => {
+        this.organizationSettingsService.get<string>('general_event_privacy_policy').subscribe(value => {
             if (value !== undefined) {
                 this._privacyPolicy.next(value);
                 this.storeLoginDataRequests.next();
             }
         });
-        this.organisationSettingsService.get<string>('general_event_legal_notice').subscribe(value => {
+        this.organizationSettingsService.get<string>('general_event_legal_notice').subscribe(value => {
             if (value !== undefined) {
                 this._legalNotice.next(value);
                 this.storeLoginDataRequests.next();
             }
         });
-        this.organisationSettingsService.get<string>('openslides_theme').subscribe(value => {
+        this.organizationSettingsService.get<string>('openslides_theme').subscribe(value => {
             if (value) {
                 this._theme.next(value);
                 this.storeLoginDataRequests.next();
             }
         });
-        this.organisationSettingsService
+        this.organizationSettingsService
             .get<{ path: string; display_name: string }>('logo_web_header')
             .subscribe(value => {
                 if (value) {

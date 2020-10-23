@@ -1,0 +1,15 @@
+<os-list-view-table
+    [listObservableProvider]="repo"
+    [columns]="tableColumnDefinition"
+    [allowProjector]="false"
+    [showListOfSpeakers]="false"
+    [(selectedRows)]="selectedRows"
+    (dataSourceChange)="onDataSourceChange($event)"
+    [filterProps]="['name']"
+>
+    <div *pblNgridCellDef="'name'; value as name; row as organization" class="cell-slot fill">
+        <div>
+            {{ name }}
+        </div>
+    </div>
+</os-list-view-table>

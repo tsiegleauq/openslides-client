@@ -27,15 +27,24 @@ export class LogoComponent implements OnInit {
     @Input()
     public footer = false;
 
+    @Input()
+    public default = false;
+
     public constructor(private themeService: ThemeService, private mediaManageService: MediaManageService) {}
 
     public ngOnInit(): void {
-        this.mediaManageService.getLogoUrlObservable('web_header').subscribe(path => {
-            if (this.footer !== !!path) {
-                this.logoPath = path;
-            } else {
-                this.logoPath = this.themeService.isDarkTheme ? DEFAULT_LOGO_DARK_THEME : DEFAULT_LOGO;
-            }
-        });
+        if (this.default) {
+            this.logoPath = DEFAULT_LOGO_DARK_THEME;
+        } else {
+            this.mediaManageService.getLogoUrlObservable('web_header').subscribe(path => {
+                if (this.footer !== !!path) {
+                    this.logoPath = path;
+                } else {
+                    this.logoPath = this.themeService.isDarkTheme ? DEFAULT_LOGO_DARK_THEME : DEFAULT_LOGO;
+                }
+            });
+        }
+
+
     }
 }

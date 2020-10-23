@@ -4,6 +4,7 @@ import { Committee } from 'app/shared/models/event-management/committee';
 import { ViewCommittee } from 'app/site/event-management/models/view-committee';
 import { BaseRepository } from '../base-repository';
 import { RepositoryServiceCollector } from '../repository-service-collector';
+import { Fieldsets, DEFAULT_FIELDSET } from 'app/core/core-services/model-request-builder.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,13 @@ import { RepositoryServiceCollector } from '../repository-service-collector';
 export class CommitteeRepositoryService extends BaseRepository<ViewCommittee, Committee> {
     public constructor(repositoryServiceCollector: RepositoryServiceCollector) {
         super(repositoryServiceCollector, Committee);
+    }
+
+    public getFieldsets(): Fieldsets<Committee> {
+        const listFields: (keyof Committee)[] = ['name', 'description'];
+        return {
+            [DEFAULT_FIELDSET]: listFields
+        };
     }
 
     public getTitle = (viewCommittee: ViewCommittee) => {

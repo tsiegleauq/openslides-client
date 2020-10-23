@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import { MotionPollRepositoryService } from 'app/core/repositories/motions/motion-poll-repository.service';
 import { MeetingSettingsService } from 'app/core/ui-services/meeting-settings.service';
-import { OrganisationSettingsService } from 'app/core/ui-services/organisation-settings.service';
+import { OrganizationSettingsService } from 'app/core/ui-services/organization-settings.service';
 import { MotionPoll, MotionPollMethod } from 'app/shared/models/motions/motion-poll';
 import { MajorityMethod, PercentBase, PollType } from 'app/shared/models/poll/base-poll';
 import { ParsePollNumberPipe } from 'app/shared/pipes/parse-poll-number.pipe';
@@ -41,14 +41,14 @@ export class MotionPollService extends PollService {
     public defaultPollType: PollType;
 
     public constructor(
-        organisationSettingsService: OrganisationSettingsService,
+        organizationSettingsService: OrganizationSettingsService,
         pollKeyVerbose: PollKeyVerbosePipe,
         parsePollNumber: ParsePollNumberPipe,
         protected translate: TranslateService,
         private pollRepo: MotionPollRepositoryService,
         private meetingSettingsService: MeetingSettingsService
     ) {
-        super(organisationSettingsService, translate, pollKeyVerbose, parsePollNumber);
+        super(organizationSettingsService, translate, pollKeyVerbose, parsePollNumber);
         this.meetingSettingsService
             .get('motion_poll_default_100_percent_base')
             .subscribe(base => (this.defaultPercentBase = base));

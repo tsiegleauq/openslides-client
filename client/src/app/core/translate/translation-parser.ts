@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { TranslateDefaultParser, TranslateStore } from '@ngx-translate/core';
 
-import { OrganisationSettingsService } from '../ui-services/organisation-settings.service';
+import { OrganizationSettingsService } from '../ui-services/organization-settings.service';
 
 export interface CustomTranslation {
     original: string;
@@ -12,7 +12,7 @@ export interface CustomTranslation {
 export type CustomTranslations = CustomTranslation[];
 
 /**
- * Custom translate parser. Intercepts and use custom translations from the organisation settings service.
+ * Custom translate parser. Intercepts and use custom translations from the organization settings service.
  */
 @Injectable()
 export class OpenSlidesTranslateParser extends TranslateDefaultParser {
@@ -25,12 +25,12 @@ export class OpenSlidesTranslateParser extends TranslateDefaultParser {
      * Subscribes to the custom translations and watches for updated custom translations.
      */
     public constructor(
-        organisationSettingsService: OrganisationSettingsService,
+        organizationSettingsService: OrganizationSettingsService,
         private translateStore: TranslateStore
     ) {
         super();
 
-        organisationSettingsService.get<CustomTranslations>('translations').subscribe(ct => {
+        organizationSettingsService.get<CustomTranslations>('translations').subscribe(ct => {
             if (!ct) {
                 ct = [];
             }

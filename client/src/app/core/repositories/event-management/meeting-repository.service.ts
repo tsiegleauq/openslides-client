@@ -20,7 +20,7 @@ export class MeetingRepositoryService extends BaseRepository<ViewMeeting, Meetin
 
     public getFieldsets(): Fieldsets<Meeting> {
         return {
-            [DEFAULT_FIELDSET]: ['description'],
+            [DEFAULT_FIELDSET]: ['name', 'description'],
             settings: this.meetingSettingsDefinitionProvider.getSettingsKeys()
         };
     }

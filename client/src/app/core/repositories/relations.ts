@@ -10,7 +10,7 @@ import { BaseViewModel, ViewModelConstructor } from 'app/site/base/base-view-mod
 import { Projectable } from 'app/site/base/projectable';
 import { ViewCommittee } from 'app/site/event-management/models/view-committee';
 import { ViewMeeting } from 'app/site/event-management/models/view-meeting';
-import { ViewOrganisation } from 'app/site/event-management/models/view-organisation';
+import { ViewOrganization } from 'app/site/event-management/models/view-organization';
 import { ViewResource } from 'app/site/event-management/models/view-resource';
 import { ViewRole } from 'app/site/event-management/models/view-role';
 import { HasAttachment, ViewMediafile } from 'app/site/mediafiles/models/view-mediafile';
@@ -109,30 +109,30 @@ function makeManyStructuredUsers2MRelation<V extends BaseViewModel>(
 //     - The motion<->category relation in in the motion block
 
 export const RELATIONS: Relation[] = [
-    // ########## Organisation
+    // ########## Organization
     ...makeM2O({
-        OViewModel: ViewOrganisation,
+        OViewModel: ViewOrganization,
         MViewModel: ViewCommittee,
         OField: 'committees',
-        MField: 'organisation'
+        MField: 'organization'
     }),
     ...makeM2O({
-        OViewModel: ViewOrganisation,
+        OViewModel: ViewOrganization,
         MViewModel: ViewRole,
         OField: 'roles',
-        MField: 'organisation'
+        MField: 'organization'
     }),
     ...makeO2O({
-        AViewModel: ViewOrganisation,
+        AViewModel: ViewOrganization,
         BViewModel: ViewRole,
         AField: 'superadmin_role',
-        BField: 'superadmin_role_for_organisation'
+        BField: 'superadmin_role_for_organization'
     }),
     ...makeM2O({
-        OViewModel: ViewOrganisation,
+        OViewModel: ViewOrganization,
         MViewModel: ViewResource,
         OField: 'resources',
-        MField: 'organisation'
+        MField: 'organization'
     }),
     // ########## User
     ...makeManyStructuredUsers2MRelation({

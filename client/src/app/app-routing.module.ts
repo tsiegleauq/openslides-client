@@ -31,7 +31,12 @@ const routes: Route[] = [
             import('./fullscreen-projector/fullscreen-projector.module').then(m => m.FullscreenProjectorModule),
         data: { noInterruption: true }
     },
-    { path: '', loadChildren: () => import('./site/site.module').then(m => m.SiteModule) },
+    {
+        path: 'manage',
+        loadChildren: () => import('./management/management.module').then(m => m.ManagementModule)
+    },
+    { path: '', redirectTo: 'manage', pathMatch: 'full' },
+    { path: ':id', loadChildren: () => import('./site/site.module').then(m => m.SiteModule) },
     { path: '**', redirectTo: '' }
 ];
 

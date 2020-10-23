@@ -1,7 +1,10 @@
 import { Id } from 'app/core/definitions/key-types';
 import { BaseModel } from '../base/base-model';
 
-export class Organisation extends BaseModel<Organisation> {
+export class Organization extends BaseModel<Organization> {
+    /**
+     * Todo: rename the collection to "organization" on the server
+     */
     public static COLLECTION = 'organisation';
 
     public id: Id;
@@ -17,12 +20,12 @@ export class Organisation extends BaseModel<Organisation> {
     public reset_password_verbose_errors: boolean;
     public enable_electronic_voting: boolean;
 
-    public committee_ids: Id[]; // (committee/organisation_id)[];
-    public role_ids: Id[]; // (role/organisation_id)[];
-    public superadmin_role_id: Id; // role/superadmin_role_for_organisation_id;
-    public resource_ids: Id[]; // (resource/organisation_id)[];
+    public committee_ids: Id[]; // (committee/organization_id)[];
+    public role_ids: Id[]; // (role/organization_id)[];
+    public superadmin_role_id: Id; // role/superadmin_role_for_organization_id;
+    public resource_ids: Id[]; // (resource/organization_id)[];
 
     public constructor(input?: any) {
-        super(Organisation.COLLECTION, input);
+        super(Organization.COLLECTION, input);
     }
 }

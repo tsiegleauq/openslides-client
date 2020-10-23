@@ -2,7 +2,7 @@ import { Committee } from 'app/shared/models/event-management/committee';
 import { BaseViewModel } from 'app/site/base/base-view-model';
 import { ViewUser } from 'app/site/users/models/view-user';
 import { ViewMeeting } from './view-meeting';
-import { ViewOrganisation } from './view-organisation';
+import { ViewOrganization } from './view-organization';
 
 export class ViewCommittee extends BaseViewModel<Committee> {
     public static COLLECTION = Committee.COLLECTION;
@@ -19,6 +19,6 @@ interface ICommitteeRelations {
     managers: ViewUser[];
     forward_to_committees: ViewCommittee[];
     receive_forwardings_from_committees: ViewCommittee[];
-    organisation: ViewOrganisation;
+    organization: ViewOrganization;
 }
 export interface ViewCommittee extends Committee, ICommitteeRelations {}

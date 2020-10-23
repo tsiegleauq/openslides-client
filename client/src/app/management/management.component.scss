@@ -1,0 +1,90 @@
+.manage-component-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.manage-toolbar {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-gap: 1em;
+
+    .os-logo-container {
+        margin: auto 0;
+        width: 200px !important;
+    }
+
+    .component-title {
+        margin: auto 0;
+        text-align: center;
+    }
+
+    .actions {
+        text-align: end;
+    }
+}
+
+.mat-sidenav-container {
+    height: 100%;
+    width: 100%;
+
+    .side-panel {
+        border: 0;
+        box-shadow: 3px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        width: 260px;
+        overflow-x: hidden;
+
+        .mat-nav-list {
+            padding-top: 0;
+            padding-bottom: 20px;
+        }
+
+        .mat-icon {
+            min-width: 20px; //puts the text to the right on the same level
+            margin-right: 25px;
+        }
+    }
+}
+
+// CSS for the toggle button (copy)
+.nav-toggle-button-container {
+    position: fixed;
+    z-index: 99;
+    bottom: 24px;
+    & > div {
+        position: relative;
+    }
+
+    .nav-toggle-button {
+        bottom: 0;
+
+        position: absolute;
+        visibility: visible;
+        transform: none;
+        width: 24px;
+        min-width: 24px;
+        height: 48px;
+        padding: 0 0 2px;
+
+        &.left {
+            left: 236px;
+            padding-left: 8px;
+            border-radius: 50px 0 0 50px;
+        }
+
+        &.right {
+            left: 0;
+            padding-right: 8px;
+            border-radius: 0 50px 50px 0;
+        }
+
+        .mat-icon {
+            $size: 18px;
+            height: $size;
+            width: $size;
+            font-size: $size;
+            margin: 0;
+        }
+    }
+}

@@ -9,20 +9,20 @@ import { DataStoreService } from '../core-services/data-store.service';
  *
  * @example
  * ```ts
- * this.organisationSettingsService.get('general_event_name').subscribe(value => {
+ * this.organizationSettingsService.get('general_event_name').subscribe(value => {
  *     console.log(value);
  * });
  * ```
  *
  * @example
  * ```ts
- * const value = this.organisationSettingsService.instant('general_event_name');
+ * const value = this.organizationSettingsService.instant('general_event_name');
  * ```
  */
 @Injectable({
     providedIn: 'root'
 })
-export class OrganisationSettingsService {
+export class OrganizationSettingsService {
     /**
      * Stores a subject per key. Values are published, if the DataStore gets an update.
      */

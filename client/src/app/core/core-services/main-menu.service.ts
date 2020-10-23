@@ -30,7 +30,7 @@ export interface MainMenuEntry {
     /**
      * The permission to see the entry.
      */
-    permission: Permission;
+    permission?: Permission;
 }
 
 /**

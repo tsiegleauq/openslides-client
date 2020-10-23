@@ -3,7 +3,7 @@ import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/s
 import { Title } from '@angular/platform-browser';
 
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject, Subject } from 'rxjs';
 
 import { Permission } from 'app/core/core-services/permission';
 import { ComponentServiceCollector } from 'app/core/ui-services/component-service-collector';
@@ -52,6 +52,12 @@ export abstract class BaseComponent implements OnDestroy {
      * Subscriptions added to this list will be cleared 'on destroy'
      */
     protected subscriptions: Subscription[] = [];
+
+    private titleSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+    public titleObservable = this.titleSubject.asObservable().toPromise();
+
+    public pageTitle = '';
 
     /**
      * Settings for the TinyMCE editor selector
@@ -116,6 +122,11 @@ export abstract class BaseComponent implements OnDestroy {
      * @param prefix The title prefix. Should be translated here.
      */
     public setTitle(prefix: string): void {
+        this.titleSubject.next(prefix);
+        console.log('title prefix ', prefix);
+
+        this.pageTitle = prefix;
+
         const translatedPrefix = this.translate.instant(prefix);
         this.titleService.setTitle(translatedPrefix + this.titleSuffix);
     }

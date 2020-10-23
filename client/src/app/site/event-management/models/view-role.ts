@@ -1,7 +1,7 @@
 import { Role } from 'app/shared/models/event-management/role';
 import { BaseViewModel } from 'app/site/base/base-view-model';
 import { ViewUser } from 'app/site/users/models/view-user';
-import { ViewOrganisation } from './view-organisation';
+import { ViewOrganization } from './view-organization';
 
 export class ViewRole extends BaseViewModel<Role> {
     public static COLLECTION = Role.COLLECTION;
@@ -12,8 +12,8 @@ export class ViewRole extends BaseViewModel<Role> {
     }
 }
 interface IRoleRelations {
-    organisation: ViewOrganisation;
-    superadmin_role_for_organisation?: ViewOrganisation;
+    organization: ViewOrganization;
+    superadmin_role_for_organization?: ViewOrganization;
     users: ViewUser[];
 }
 export interface ViewRole extends Role, IRoleRelations {}

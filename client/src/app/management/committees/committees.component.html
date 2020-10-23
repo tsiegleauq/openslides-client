@@ -1,0 +1,16 @@
+<os-list-view-table
+    [listObservableProvider]="repo"
+    [columns]="tableColumnDefinition"
+    [allowProjector]="false"
+    [showListOfSpeakers]="false"
+    [(selectedRows)]="selectedRows"
+    (dataSourceChange)="onDataSourceChange($event)"
+    [filterProps]="['name']"
+>
+    <div *pblNgridCellDef="'name'; value as name; row as committee" class="cell-slot fill">
+        <a class="detail-link" [routerLink]="committee.id" *ngIf="!isMultiSelect"></a>
+        <div>
+            {{ name }}
+        </div>
+    </div>
+</os-list-view-table>
